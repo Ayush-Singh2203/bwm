@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       const submitBtn = form.querySelector('[type="submit"]');
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
+      submitBtn.textContent = 'Sending\u2026';
 
       fetch(form.action, {
         method: 'POST',
@@ -127,6 +127,17 @@ document.addEventListener('DOMContentLoaded', function () {
           status.style.color = '#2a7a2a';
           status.textContent = '\u2713 Message sent! We\u2019ll be in touch shortly.';
           form.reset();
+
+          // Google Ads: fire form submission conversion
+          if (typeof gtag === 'function') {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-18205040266/-MzaCMqLq7gcEIq96-hD',
+              'value': 1.0,
+              'currency': 'INR',
+              'event_callback': function () {}
+            });
+          }
+
         } else {
           return res.json().then(function (json) {
             throw new Error(json.errors ? json.errors.map(function (e) { return e.message; }).join(', ') : 'Failed');
@@ -139,10 +150,23 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .finally(function () {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message →';
+        submitBtn.textContent = 'Send Message \u2192';
       });
     });
   }
+
+  /* ----- Google Ads: Phone number click tracking ----- */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18205040266/-MzaCMqLq7gcEIq96-hD',
+          'value': 1.0,
+          'currency': 'INR'
+        });
+      }
+    });
+  });
 
 
   /* ----- Back to top ----- */
