@@ -33,13 +33,81 @@
     gtag('config', 'AW-18205040266');
   </script>
 
-  <!-- Event snippet for Page view conversion -->
-  <script>
-    gtag('event', 'conversion', {
-      'send_to': 'AW-18205040266/-MzaCMqLq7gcEIq96-hD',
-      'value': 1.0,
-      'currency': 'INR'
-    });
+  <!-- Event snippet fires only on form submit and phone click (in script.js) -->
+
+  <!-- Schema.org structured data – improves Google Ads Quality Score -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.bwm.co.in/#business",
+        "name": "Banaraswala Wire Mesh Private Limited",
+        "alternateName": "BWM",
+        "url": "https://www.bwm.co.in",
+        "logo": "https://www.bwm.co.in/images/bwm-logo.webp",
+        "image": "https://www.bwm.co.in/images/bwm-logo.webp",
+        "description": "ISO 9001:2015 certified manufacturer of wire mesh, perforated sheets, welded mesh, expanded metal and chainlink fencing since 1986.",
+        "foundingYear": "1986",
+        "telephone": ["+919391585658", "+917200972090"],
+        "email": "hyderabad@banaraswala.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "07-016/A/430, SY No 240, Subash Nagar, Jeedimetla village",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "postalCode": "500055",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "17.4965",
+          "longitude": "78.4169"
+        },
+        "openingHours": "Mo-Sa 09:00-18:00",
+        "priceRange": "₹₹",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Wire Mesh & Metal Filtration Products",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Wire Mesh" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Perforated Sheet" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Vibrating Screen Wire Mesh" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Welded Mesh" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Expanded Metal" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Chainlink Fencing" } }
+          ]
+        },
+        "sameAs": ["https://bwm.co.in"]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What products does Banaraswala manufacture?",
+            "acceptedAnswer": { "@type": "Answer", "text": "We manufacture woven wire mesh, perforated sheets, welded mesh, chain link fencing, expanded metal, and vibrating screen mesh for industrial and commercial use." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer customized mesh solutions?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. We provide custom sizes, materials, and specifications to meet your project's exact requirements." }
+          },
+          {
+            "@type": "Question",
+            "name": "Are your products certified for quality?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Banaraswala is an ISO 9001:2015 certified company, and our products are manufactured under strict quality management systems." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you provide delivery across the country?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer nationwide coverage for faster and more affordable delivery across all Indian states." }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 
   <link rel="stylesheet" href="style.css" />

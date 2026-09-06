@@ -128,15 +128,10 @@ document.addEventListener('DOMContentLoaded', function () {
           status.textContent = '\u2713 Message sent! We\u2019ll be in touch shortly.';
           form.reset();
 
-          // Google Ads: fire form submission conversion
-          if (typeof gtag === 'function') {
-            gtag('event', 'conversion', {
-              'send_to': 'AW-18205040266/-MzaCMqLq7gcEIq96-hD',
-              'value': 1.0,
-              'currency': 'INR',
-              'event_callback': function () {}
-            });
-          }
+          // Redirect to thank-you page after 800ms (fires conversion there)
+          setTimeout(function () {
+            window.location.href = 'thank-you.html';
+          }, 800);
 
         } else {
           return res.json().then(function (json) {
