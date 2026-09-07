@@ -150,18 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ----- Google Ads: Phone number click tracking ----- */
-  document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (typeof gtag === 'function') {
-        gtag('event', 'conversion', {
-          'send_to': 'AW-18205040266/-MzaCMqLq7gcEIq96-hD',
-          'value': 1.0,
-          'currency': 'INR'
-        });
-      }
-    });
-  });
+  /* ----- Phone click tracking handled by gtag_report_conversion() in HTML ----- */
 
 
   /* ----- Back to top ----- */
