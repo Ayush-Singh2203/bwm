@@ -152,6 +152,62 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ----- Phone click tracking handled by gtag_report_conversion() in HTML ----- */
 
+  /* ----- Email click tracking ----- */
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'email_click', {
+          event_category: 'Contact',
+          event_label: link.href
+        });
+        gtag('event', 'conversion', {
+          send_to: 'AW-18205040266/XsOaCJz91vAcEIq96-hD',
+          value: 1.0,
+          currency: 'INR'
+        });
+      }
+    });
+  });
+
+  /* ----- WhatsApp float click tracking ----- */
+  var whatsappBtn = document.querySelector('.whatsapp-float');
+  if (whatsappBtn) {
+    whatsappBtn.addEventListener('click', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'whatsapp_click', {
+          event_category: 'Contact',
+          event_label: 'WhatsApp Float Button'
+        });
+        gtag('event', 'conversion', {
+          send_to: 'AW-18205040266/XsOaCJz91vAcEIq96-hD',
+          value: 1.0,
+          currency: 'INR'
+        });
+      }
+    });
+  }
+
+  /* ----- Scroll depth tracking (25%, 50%, 75%, 90%) ----- */
+  var scrollDepthFired = {};
+  var depthMarks = [25, 50, 75, 90];
+  window.addEventListener('scroll', function () {
+    var scrollPct = Math.round(
+      (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+    );
+    depthMarks.forEach(function (mark) {
+      if (scrollPct >= mark && !scrollDepthFired[mark]) {
+        scrollDepthFired[mark] = true;
+        if (typeof gtag === 'function') {
+          gtag('event', 'scroll_depth', {
+            event_category: 'Engagement',
+            event_label: mark + '%',
+            value: mark
+          });
+        }
+      }
+    });
+  }, { passive: true });
+
 
   /* ----- Back to top ----- */
   const btt = document.getElementById('back-to-top');
