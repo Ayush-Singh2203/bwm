@@ -4,16 +4,14 @@
 
 /* ─────────────────────────────────────────────
    GOOGLE ADS CONVERSION IDs
-   ─────────────────────────────────────────────
-   Account tag:   AW-18205040266
-   Phone/WA/Email click: AW-18205040266/XsOaCJz91vAcEIq96-hD
-   Brochure download:    AW-18205040266/XsOaCJz91vAcEIq96-hD  (reuse or create separate)
-   Form submission:      AW-18205040266/XsOaCJz91vAcEIq96-hD  (reuse or create separate)
+   Account tag:       AW-18205040266
+   All conversions:   AW-18205040266/XsOaCJz91vAcEIq96-hD
+   Form submission:   AW-18205040266/-MzaCMqLq7gcEIq96-hD
    ───────────────────────────────────────────── */
 var CONV_PHONE    = 'AW-18205040266/XsOaCJz91vAcEIq96-hD';
 var CONV_EMAIL    = 'AW-18205040266/XsOaCJz91vAcEIq96-hD';
 var CONV_BROCHURE = 'AW-18205040266/XsOaCJz91vAcEIq96-hD';
-var CONV_FORM     = 'AW-18205040266/XsOaCJz91vAcEIq96-hD';
+var CONV_FORM     = 'AW-18205040266/-MzaCMqLq7gcEIq96-hD';
 
 /* Helper: fire a Google Ads + GA4 conversion */
 function fireConversion(sendTo, value) {
@@ -381,13 +379,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }).catch(function () { /* silent fail */ });
           }
 
-          /* Open PDF directly */
-          window.open('images/BWM_CatalogV2.36cm.pdf', '_blank');
-
-          /* Close form, show thank-you */
-          closeModal(brochureModal);
-          setTimeout(function () { openModal(brochureThankyou); }, 350);
+          /* Close modal and redirect to brochure thank-you page */
           brochureForm.reset();
+          closeModal(brochureModal);
+          setTimeout(function () {
+            window.location.href = 'brochure-thank-you.html';
+          }, 400);
         } else {
           return res.json().then(function (json) {
             throw new Error(json.errors ? json.errors.map(function (er) { return er.message; }).join(', ') : 'Server error');
@@ -472,22 +469,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  /* ── 1. Scroll depth (25, 50, 75, 90%) ── */
-  var scrollFired = {};
-  window.addEventListener('scroll', function () {
-    var pct = Math.round(
-      (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
-    );
-    [25, 50, 75, 90].forEach(function (mark) {
-      if (pct >= mark && !scrollFired[mark]) {
-        scrollFired[mark] = true;
-        gaEvent('scroll_depth', { percent: mark, event_category: 'Engagement' });
-      }
-    });
-  }, { passive: true });
-
-
-  /* ── 2. Get a Quote button clicks ── */
+  /* ── 1. Get a Quote button clicks ── */
   document.querySelectorAll('a[href="#contact"]').forEach(function (el) {
     el.addEventListener('click', function () {
       gaEvent('get_quote_click', { event_category: 'CTA', event_label: el.textContent.trim().substring(0, 50) });

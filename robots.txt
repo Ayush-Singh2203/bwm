@@ -1,0 +1,8 @@
+﻿User-agent: *
+Allow: /
+Disallow: /thank-you*
+Disallow: /brochure-thank-you*
+
+# Sitemap
+Sitemap: https://bwm.co.in/sitemap.xml
+

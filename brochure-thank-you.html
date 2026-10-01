@@ -11,7 +11,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thank You | BWM – Banaraswala Wire Mesh Pvt. Ltd.</title>
+  <title>Brochure Request Received | BWM – Banaraswala Wire Mesh Pvt. Ltd.</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="icon" type="image/webp" href="images/logo.webp" />
@@ -25,13 +25,13 @@
     gtag('config', 'G-TCXMT7WTZW');
     gtag('config', 'AW-18205040266');
 
-    // Fire form submission conversion
+    // Fire brochure conversion
     gtag('event', 'conversion', {
       'send_to': 'AW-18205040266/-MzaCMqLq7gcEIq96-hD',
       'value': 1.0,
       'currency': 'INR'
     });
-    gtag('event', 'form_submit', { event_category: 'Contact', event_label: 'Thank You Page' });
+    gtag('event', 'brochure_download', { event_category: 'Engagement', event_label: 'Brochure Thank You Page' });
   </script>
 
   <!-- Google Ads: Click to call -->
@@ -107,6 +107,16 @@
     .contact-quick { font-size: 14px; color: var(--text-muted); }
     .contact-quick a { color: var(--primary); font-weight: 700; text-decoration: none; }
     .contact-quick a:hover { color: var(--secondary); }
+    .brochure-note {
+      background: rgba(252,107,1,0.08);
+      border: 1px solid rgba(252,107,1,0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--text);
+      margin: 20px 0 0;
+      line-height: 1.6;
+    }
     @media (max-width: 480px) {
       .thankyou-card { padding: 40px 24px; }
       .thankyou-card h1 { font-size: 28px; }
@@ -131,22 +141,27 @@
 
   <div class="thankyou-page">
     <div class="thankyou-card">
-      <span class="thankyou-icon">✅</span>
-      <h1>Thank You!</h1>
-      <p>Your enquiry has been received successfully.</p>
-      <p>Our team will <span class="highlight">get back to you within 24 hours</span> with a detailed quotation.</p>
-      <p>In the meantime, feel free to download our product brochure or call us directly.</p>
+      <span class="thankyou-icon">📄</span>
+      <h1>Brochure on Its Way!</h1>
+      <p>Thank you for your interest in BWM.</p>
+      <p>The <span class="highlight">BWM Industrial Brochure</span> has been sent to your email. Please check your inbox (and spam folder, just in case).</p>
+
+      <div class="brochure-note">
+        📬 Didn't receive it? Write to us at
+        <a href="mailto:hyderabad@banaraswala.com">hyderabad@banaraswala.com</a>
+        and we'll resend it immediately.
+      </div>
 
       <hr class="thankyou-divider" />
 
       <div class="contact-quick">
+        <p>Have an urgent requirement? Call us now:</p>
         <p>📞 <a href="tel:+919391585658" onclick="return gtag_report_conversion('tel:+919391585658')">93915 85658</a> &nbsp;|&nbsp; <a href="tel:+917200972090" onclick="return gtag_report_conversion('tel:+917200972090')">72009 72090</a></p>
-        <p>✉️ <a href="mailto:hyderabad@banaraswala.com">hyderabad@banaraswala.com</a></p>
       </div>
 
       <div class="thankyou-btns">
         <a href="index.html" class="btn btn-secondary">← Back to Home</a>
-        <a href="brochure-thank-you.html" class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);">⬇ Download Brochure</a>
+        <a href="index.html#contact" class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);">Get a Quote →</a>
       </div>
     </div>
   </div>
