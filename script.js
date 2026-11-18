@@ -183,25 +183,42 @@ document.addEventListener('DOMContentLoaded', function () {
      8. PHONE, EMAIL & WHATSAPP CLICK TRACKING
      ════════════════════════════════════════════ */
 
-  /* Phone clicks – GA4 event (Google Ads handled by gtag_report_conversion in HTML) */
+  /* Phone clicks – exact number + location */
   document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
     link.addEventListener('click', function () {
       if (typeof gtag === 'function') {
+        var number = link.href.replace('tel:', '').replace('+91', '').trim();
+        var location = 'unknown';
+        if (link.closest('.hero-phone-card'))       location = 'hero';
+        else if (link.closest('.contact-detail'))   location = 'contact_section';
+        else if (link.closest('.footer-contact-col')) location = 'footer';
+        else if (link.closest('.phone-float'))      location = 'float_button';
+        else if (link.closest('.modal-box'))        location = 'modal';
+
         gtag('event', 'phone_click', {
           event_category: 'Contact',
-          event_label: link.href
+          event_label: number,
+          click_location: location,
+          phone_number: number
         });
       }
     });
   });
 
-  /* Email clicks */
+  /* Email clicks – exact address + location */
   document.querySelectorAll('a[href^="mailto:"]').forEach(function (link) {
     link.addEventListener('click', function () {
       if (typeof gtag === 'function') {
+        var email = link.href.replace('mailto:', '').trim();
+        var location = 'unknown';
+        if (link.closest('.contact-detail'))        location = 'contact_section';
+        else if (link.closest('.footer-contact-col')) location = 'footer';
+
         gtag('event', 'email_click', {
           event_category: 'Contact',
-          event_label: link.href
+          event_label: email,
+          click_location: location,
+          email_address: email
         });
         gtag('event', 'conversion', {
           send_to: CONV_EMAIL,
